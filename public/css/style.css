@@ -1,0 +1,152 @@
+/* === ESTRUCTURA GENERAL === */
+.navbar {
+  background-color: #f8f8f8;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-item {
+  text-decoration: none;
+  color: #070707;
+  font-weight: bold;
+}
+
+.navbar-item:hover {
+  color: #007bff;
+}
+
+/* === BOTÓN HAMBURGUESA === */
+.navbar-burger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  display: none; /* solo visible en móvil */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1100;
+}
+
+.navbar-burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #333;
+  margin-bottom: 4px;
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-burger span:last-child {
+  margin-bottom: 0;
+}
+
+/* === MENÚ PRINCIPAL === */
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  position: static;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.navbar-start {
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+}
+
+.navbar-start li {
+  list-style: none;
+}
+
+/* === MEDIA QUERY - MÓVIL === */
+@media screen and (max-width: 768px) {
+  /* Mostrar el botón hamburguesa */
+  .navbar-burger {
+    display: flex;
+  }
+
+  /* Menú oculto inicialmente */
+  .navbar-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: auto;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #fff;
+    box-shadow: 2px 0 16px rgba(0, 0, 0, 0.2);
+    padding-top: 60px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+
+  /* Mostrar menú cuando está activo */
+  .navbar-menu.is-active {
+    transform: translateX(0);
+  }
+
+  /* Overlay oscuro detrás del menú */
+  .navbar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .navbar-overlay.is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Ítems dentro del menú */
+  .navbar-start {
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+  }
+
+  .navbar-start li {
+    list-style: none;
+    width: 100%;
+  }
+
+  .navbar-item {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  .navbar-item:last-child {
+    border-bottom: none;
+  }
+}
+
+/* === CONTENIDO PRINCIPAL === */
+main {
+  margin-top: 5px;
+  padding: 5px;
+}
+
+.min-height-content {
+  min-height: 390px;
+}
